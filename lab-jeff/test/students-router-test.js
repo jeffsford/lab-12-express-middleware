@@ -113,6 +113,12 @@ describe('testing students routes', () => {
         expect(res.status).toEqual(400);
       });
     });
+    it('should respond with a 404', () => {
+      superagent.put(`${API_URL}/api/students/4`)
+      .then(err => {
+        expect(err.status).toEqual(404);
+      });
+    });
   });
   describe('test DELETE /api/students/:id', () => {
     afterEach(() => Student.remove({}));
